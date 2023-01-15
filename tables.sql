@@ -1,16 +1,9 @@
--- Aqui você deve colocar os códigos SQL referentes à
-
--- Criação das tabelas
-
--- Tabela clientes
-
     CREATE TABLE IF NOT EXISTS clientes(
         id BIGSERIAL PRIMARY KEY,
         nome VARCHAR(50) NOT NULL,
         lealdade INT NOT NULL
 );
 
--- Tabela endereços
     CREATE TABLE IF NOT EXISTS enderecos(
         cep VARCHAR(9) NOT NULL,
         rua VARCHAR(50) NOT NULL,
@@ -21,7 +14,6 @@
         FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 
--- Tabela pedidos
     CREATE TABLE IF NOT EXISTS pedidos(
         id BIGSERIAL PRIMARY KEY,
         status VARCHAR(50) NOT NULL,
@@ -29,7 +21,6 @@
         FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 
--- Tabela produtos
     CREATE TABLE IF NOT EXISTS produtos(
         id BIGSERIAL PRIMARY KEY,
         nome VARCHAR(100) UNIQUE NOT NULL,
@@ -37,8 +28,6 @@
         preço DECIMAL(8, 2) NOT NULL,
         pts_de_lealdade INT NOT NULL
 );
-
--- Tabela produtos_pedidos
 
     CREATE TABLE IF NOT EXISTS produtos_pedidos(
         pedido_id INT NOT NULL,
